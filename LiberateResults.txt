@@ -1,0 +1,4496 @@
+ File Version 130429_1210 
+library (fast_vdd1v0) {
+   Models written by Liberate 12.1 from Cadence Design Systems, Inc. on Mon Apr 22 152432 PDT 2013 
+  comment  ;
+  date  $Date Fri Sep 26 121627 2014 $;
+  revision  1.0;
+  delay_model  table_lookup;
+  capacitive_load_unit (1,pf);
+  current_unit  1mA;
+  leakage_power_unit  1pW;
+  pulling_resistance_unit  1kohm;
+  time_unit  1ns;
+  voltage_unit  1V;
+  voltage_map (VDD, 1.1);
+  voltage_map (VSS, 0);
+  voltage_map (ExtVDD, 1.1);
+  voltage_map (GND, 0);
+  voltage_map (ExtVSS, 0);
+  default_cell_leakage_power  0;
+  default_fanout_load  1;
+  default_max_transition  0.28;
+  default_output_pin_cap  0;
+  in_place_swap_mode  match_footprint;
+  input_threshold_pct_fall  50;
+  input_threshold_pct_rise  50;
+  nom_process  1;
+  nom_temperature  0;
+  nom_voltage  1.1;
+  output_threshold_pct_fall  50;
+  output_threshold_pct_rise  50;
+  slew_derate_from_library  0.5;
+  slew_lower_threshold_pct_fall  30;
+  slew_lower_threshold_pct_rise  30;
+  slew_upper_threshold_pct_fall  70;
+  slew_upper_threshold_pct_rise  70;
+  operating_conditions (PVT_1P1V_0C) {
+    process  1;
+    temperature  0;
+    voltage  1.1;
+  }
+  default_operating_conditions  PVT_1P1V_0C;
+  lu_table_template (constraint_template_2x2) {
+    variable_1  constrained_pin_transition;
+    variable_2  related_pin_transition;
+    index_1 (0.008, 0.28);
+    index_2 (0.008, 0.28);
+  }
+  lu_table_template (constraint_template_7x7) {
+    variable_1  constrained_pin_transition;
+    variable_2  related_pin_transition;
+    index_1 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+    index_2 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+  }
+  lu_table_template (delay_template_2x2) {
+    variable_1  input_net_transition;
+    variable_2  total_output_net_capacitance;
+    index_1 (0.008, 0.28);
+    index_2 (0.01, 0.3);
+  }
+  lu_table_template (delay_template_7x7) {
+    variable_1  input_net_transition;
+    variable_2  total_output_net_capacitance;
+    index_1 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+    index_2 (0.01, 0.06, 0.1, 0.15, 0.2, 0.25, 0.3);
+  }
+  lu_table_template (mpw_constraint_template_2x2) {
+    variable_1  constrained_pin_transition;
+    index_1 (0.008, 0.28);
+  }
+  lu_table_template (mpw_constraint_template_7x7) {
+    variable_1  constrained_pin_transition;
+    index_1 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+  }
+  power_lut_template (passive_power_template_2x1) {
+    variable_1  input_transition_time;
+    index_1 (0.008, 0.28);
+  }
+  power_lut_template (passive_power_template_7x1) {
+    variable_1  input_transition_time;
+    index_1 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+  }
+  power_lut_template (power_template_2x2) {
+    variable_1  input_transition_time;
+    variable_2  total_output_net_capacitance;
+    index_1 (0.008, 0.28);
+    index_2 (0.01, 0.3);
+  }
+  power_lut_template (power_template_7x7) {
+    variable_1  input_transition_time;
+    variable_2  total_output_net_capacitance;
+    index_1 (0.008, 0.04, 0.08, 0.12, 0.16, 0.224, 0.28);
+    index_2 (0.01, 0.06, 0.1, 0.15, 0.2, 0.25, 0.3);
+  }
+  cell (ACHCONX2) {
+    area  12.654;
+    pin (CON) {
+      direction : "output";
+      function : "(!(((A*B)+(B*CI))+(CI*A)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  552.953;
+      when  (A&B&CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  596.195;
+      when  (A&B&!CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  628.259;
+      when  (A&!B&CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  648.741;
+      when  (A&!B&!CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  579.513;
+      when  (!A&B&CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  658.199;
+      when  (!A&B&!CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  690.263;
+      when  (!A&!B&CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  675.301;
+      when  (!A&!B&!CI);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  628.678;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (ADDHX1) {
+    area  3.762;
+    pin (S) {
+      direction : "output";
+      function : "(A^B)";
+    }
+    pin (CO) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  285.381;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  258.477;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  271.543;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  258.297;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  268.425;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (ADDHX2) {
+    area  5.13;
+    pin (CO) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pin (S) {
+      direction : "output";
+      function : "(A^B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  362.943;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  336.039;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  349.105;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  325.081;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  343.292;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (ADDHX4) {
+    area  7.182;
+    pin (CO) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pin (S) {
+      direction : "output";
+      function : "(A^B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  580.379;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  548.883;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  545.301;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  518.001;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  548.141;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (ADDHXL) {
+    area  4.788;
+    pin (CO) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pin (S) {
+      direction : "output";
+      function : "(A^B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  260.314;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  233.41;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  246.476;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  233.045;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  243.311;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND2X4) {
+    area  2.736;
+    pin (Y) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  266.981;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  217.928;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  193.527;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  214.404;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  223.21;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND2X6) {
+    area  3.762;
+    pin (Y) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  428.899;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  352.725;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  305.93;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  356.339;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  360.973;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND2X8) {
+    area  4.446;
+    pin (Y) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  521.181;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  422.591;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  375.795;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  426.204;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  436.443;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND2XL) {
+    area  1.368;
+    pin (Y) {
+      direction : "output";
+      function : "(A*B)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  91.8907;
+      when  (A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  80.3564;
+      when  (A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  64.9983;
+      when  (!A&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  67.0177;
+      when  (!A&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  76.0658;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND3X1) {
+    area  2.394;
+    pin (Y) {
+      direction : "output";
+      function : "((A*B)*C)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  128.861;
+      when  (A&B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  105.977;
+      when  (A&B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  90.619;
+      when  (A&!B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.6385;
+      when  (A&!B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  77.279;
+      when  (!A&B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.2735;
+      when  (!A&B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  79.1852;
+      when  (!A&!B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  95.9051;
+      when  (!A&!B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  94.0923;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND3X2) {
+    area  2.736;
+    pin (Y) {
+      direction : "output";
+      function : "((A*B)*C)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  173.03;
+      when  (A&B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  139.369;
+      when  (A&B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  124.011;
+      when  (A&!B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  126.031;
+      when  (A&!B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  110.671;
+      when  (!A&B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  115.666;
+      when  (!A&B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.577;
+      when  (!A&!B&C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  129.297;
+      when  (!A&!B&!C);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  128.831;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND4X1) {
+    area  2.394;
+    pin (Y) {
+      direction : "output";
+      function : "(((A*B)*C)*D)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  153.389;
+      when  (A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  118.971;
+      when  (A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  103.613;
+      when  (A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  105.633;
+      when  (A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  90.2731;
+      when  (A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  95.2677;
+      when  (A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.1794;
+      when  (A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  108.899;
+      when  (A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  77.0873;
+      when  (!A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  84.3154;
+      when  (!A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  81.9913;
+      when  (!A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  100.592;
+      when  (!A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  79.1163;
+      when  (!A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  97.0583;
+      when  (!A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  95.5234;
+      when  (!A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  113.452;
+      when  (!A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  99.8351;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND4X2) {
+    area  3.078;
+    pin (Y) {
+      direction : "output";
+      function : "(((A*B)*C)*D)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  197.559;
+      when  (A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  152.363;
+      when  (A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  137.005;
+      when  (A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  139.025;
+      when  (A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  123.665;
+      when  (A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  128.66;
+      when  (A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  125.571;
+      when  (A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  142.291;
+      when  (A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  110.479;
+      when  (!A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  117.707;
+      when  (!A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  115.383;
+      when  (!A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  133.984;
+      when  (!A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.508;
+      when  (!A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  130.45;
+      when  (!A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  128.915;
+      when  (!A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  146.844;
+      when  (!A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  133.901;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AND4X4) {
+    area  3.762;
+    pin (Y) {
+      direction : "output";
+      function : "(((A*B)*C)*D)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  341.291;
+      when  (A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  261.16;
+      when  (A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  236.759;
+      when  (A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  257.636;
+      when  (A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  214.764;
+      when  (A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  239.829;
+      when  (A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  235.173;
+      when  (A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  268.158;
+      when  (A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  192.946;
+      when  (!A&B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  219.985;
+      when  (!A&B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  217.563;
+      when  (!A&B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  252.015;
+      when  (!A&B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  213.443;
+      when  (!A&!B&C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  247.891;
+      when  (!A&!B&C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  245.784;
+      when  (!A&!B&!C&D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  279.703;
+      when  (!A&!B&!C&!D);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  245.256;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AO21X1) {
+    area  2.394;
+    pin (Y) {
+      direction : "output";
+      function : "((A0*A1)+B0)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  102.17;
+      when  (A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  99.3552;
+      when  (A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  111.124;
+      when  (A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  135.817;
+      when  (A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  111.124;
+      when  (!A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  120.459;
+      when  (!A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  116.456;
+      when  (!A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  122.478;
+      when  (!A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  114.873;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AO21X2) {
+    area  2.736;
+    pin (Y) {
+      direction : "output";
+      function : "((A0*A1)+B0)";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  146.339;
+      when  (A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  143.525;
+      when  (A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.294;
+      when  (A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  169.209;
+      when  (A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.294;
+      when  (!A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  153.851;
+      when  (!A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.625;
+      when  (!A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.87;
+      when  (!A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.001;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AO22X2) {
+    area  3.078;
+    pin (Y) {
+      direction : "output";
+      function : "((A0*A1)+(B0*B1))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  165.669;
+      when  (A0&A1&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.901;
+      when  (A0&A1&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.901;
+      when  (A0&A1&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  143.935;
+      when  (A0&A1&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  179.822;
+      when  (A0&!A1&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  182.203;
+      when  (A0&!A1&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  166.845;
+      when  (A0&!A1&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  168.865;
+      when  (A0&!A1&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  179.822;
+      when  (!A0&A1&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  166.845;
+      when  (!A0&A1&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  151.487;
+      when  (!A0&A1&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  153.506;
+      when  (!A0&A1&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  185.154;
+      when  (!A0&!A1&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  168.865;
+      when  (!A0&!A1&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  153.506;
+      when  (!A0&!A1&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.526;
+      when  (!A0&!A1&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.866;
+      related_pg_pin  VDD;
+    }
+  }
+ cell (AOI211X1){
+    area  2.394;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)+B0)+C0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  97.9657;
+      when  (A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.7963;
+      when  (A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  85.3814;
+      when  (A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  64.6498;
+      when  (A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  110.456;
+      when  (A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  88.4546;
+      when  (A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  126.299;
+      when  (A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  187.443;
+      when  (A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  110.456;
+      when  (!A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  88.4546;
+      when  (!A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  126.299;
+      when  (!A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  163.043;
+      when  (!A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  122.603;
+      when  (!A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  100.602;
+      when  (!A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  138.447;
+      when  (!A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  183.919;
+      when  (!A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  116.767;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI211X2) {
+    area  3.42;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)+B0)+C0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  188.818;
+      when  (A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  141.182;
+      when  (A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  164.137;
+      when  (A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  121.076;
+      when  (A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  215.65;
+      when  (A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  171.343;
+      when  (A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  247.709;
+      when  (A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  339.822;
+      when  (A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  215.649;
+      when  (!A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  171.343;
+      when  (!A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  247.709;
+      when  (!A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  293.026;
+      when  (!A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  242;
+      when  (!A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  197.693;
+      when  (!A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  274.059;
+      when  (!A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  343.435;
+      when  (!A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  223.416;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI211X4) {
+    area  6.498;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)+B0)+C0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  372.822;
+      when  (A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  278.653;
+      when  (A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  325.339;
+      when  (A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  240.94;
+      when  (A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  428.951;
+      when  (A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  342.001;
+      when  (A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  496.357;
+      when  (A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  659.688;
+      when  (A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  428.951;
+      when  (!A0&A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  342.001;
+      when  (!A0&A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  496.357;
+      when  (!A0&A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  567.543;
+      when  (!A0&A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  484.099;
+      when  (!A0&!A1&B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  397.148;
+      when  (!A0&!A1&B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  551.504;
+      when  (!A0&!A1&!B0&C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  674.752;
+      when  (!A0&!A1&!B0&!C0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  442.944;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI21X1) {
+    area  1.71;
+    pin (Y) {
+      direction : "output";
+      function : "(!((A0*A1)+B0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  77.3466;
+      when  (A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  65.5022;
+      when  (A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.5353;
+      when  (A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  132.168;
+      when  (A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.5353;
+      when  (!A0&A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  107.767;
+      when  (!A0&A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  104.683;
+      when  (!A0&!A1&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  128.644;
+      when  (!A0&!A1&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  100.148;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI31X1) {
+    area  2.052;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)*A2)+B0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  99.4076;
+      when  (A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  97.6956;
+      when  (A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  114.152;
+      when  (A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  153.784;
+      when  (A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  114.152;
+      when  (A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  129.384;
+      when  (A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  126.299;
+      when  (A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  150.26;
+      when  (A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  114.152;
+      when  (!A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  107.389;
+      when  (!A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  115.904;
+      when  (!A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  132.454;
+      when  (!A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  126.299;
+      when  (!A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.798;
+      when  (!A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  138.447;
+      when  (!A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.783;
+      when  (!A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  125.522;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI31X2) {
+    area  3.42;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)*A2)+B0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  190.903;
+      when  (A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  183.062;
+      when  (A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  221.359;
+      when  (A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  281.864;
+      when  (A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  221.359;
+      when  (A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  235.069;
+      when  (A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  247.709;
+      when  (A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  285.478;
+      when  (A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  221.359;
+      when  (!A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  192.867;
+      when  (!A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  222.492;
+      when  (!A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  250.269;
+      when  (!A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  247.709;
+      when  (!A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  242.203;
+      when  (!A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  274.059;
+      when  (!A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  309.82;
+      when  (!A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  239.224;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI31X4) {
+    area  6.498;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)*A2)+B0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  377.13;
+      when  (A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  364.434;
+      when  (A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  441.21;
+      when  (A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  548.692;
+      when  (A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  441.21;
+      when  (A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  456.548;
+      when  (A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  496.357;
+      when  (A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  563.757;
+      when  (A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  441.21;
+      when  (!A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  373.447;
+      when  (!A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  442.277;
+      when  (!A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  493.421;
+      when  (!A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  496.357;
+      when  (!A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  478.548;
+      when  (!A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  551.504;
+      when  (!A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  615.768;
+      when  (!A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  473.867;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (AOI31XL) {
+    area  2.736;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((A0*A1)*A2)+B0))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  60.4213;
+      when  (A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  65.7633;
+      when  (A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  68.8425;
+      when  (A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  111.656;
+      when  (A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  68.8425;
+      when  (A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  96.298;
+      when  (A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  74.1742;
+      when  (A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  98.3175;
+      when  (A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  68.8425;
+      when  (!A0&A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.9579;
+      when  (!A0&A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  71.4157;
+      when  (!A0&A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  87.9525;
+      when  (!A0&A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  74.1742;
+      when  (!A0&!A1&A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  84.8642;
+      when  (!A0&!A1&A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  79.5059;
+      when  (!A0&!A1&!A2&B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  101.584;
+      when  (!A0&!A1&!A2&!B0);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  80.9758;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (BMXIX2) {
+    area  7.524;
+    pin (PPN) {
+      direction : "output";
+      function : "((X2*((M0*A) + (!M0*S))) + (!X2*((M1*A) + (!M1*S))))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  308.182;
+      when  (A&M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  326.488;
+      when  (A&M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  327.666;
+      when  (A&M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  345.972;
+      when  (A&M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  326.488;
+      when  (A&M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  344.793;
+      when  (A&M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  401.77;
+      when  (A&M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  396.509;
+      when  (A&M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  326.488;
+      when  (A&!M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  344.793;
+      when  (A&!M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  378.203;
+      when  (A&!M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  420.076;
+      when  (A&!M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  344.793;
+      when  (A&!M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  363.099;
+      when  (A&!M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  394.325;
+      when  (A&!M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  412.63;
+      when  (A&!M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  357.713;
+      when  (!A&M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  376.019;
+      when  (!A&M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  331.036;
+      when  (!A&M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  349.342;
+      when  (!A&M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  378.204;
+      when  (!A&M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  420.076;
+      when  (!A&M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  349.342;
+      when  (!A&M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  367.647;
+      when  (!A&M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  401.77;
+      when  (!A&!M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  396.509;
+      when  (!A&!M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  349.342;
+      when  (!A&!M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  367.647;
+      when  (!A&!M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  364.278;
+      when  (!A&!M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  382.583;
+      when  (!A&!M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  367.647;
+      when  (!A&!M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  385.953;
+      when  (!A&!M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  365.856;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (BMXIX4) {
+    area  8.55;
+    pin (PPN) {
+      direction : "output";
+      function : "((X2*((M0*A) + (!M0*S))) + (!X2*((M1*A) + (!M1*S))))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  419.933;
+      when  (A&M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  438.238;
+      when  (A&M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  439.417;
+      when  (A&M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  457.722;
+      when  (A&M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  438.238;
+      when  (A&M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  456.544;
+      when  (A&M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  504.628;
+      when  (A&M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  483.446;
+      when  (A&M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  438.238;
+      when  (A&!M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  456.544;
+      when  (A&!M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  465.14;
+      when  (A&!M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  522.934;
+      when  (A&!M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  456.544;
+      when  (A&!M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  474.85;
+      when  (A&!M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  482.288;
+      when  (A&!M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  500.594;
+      when  (A&!M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  445.677;
+      when  (!A&M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  463.983;
+      when  (!A&M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  419;
+      when  (!A&M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  437.305;
+      when  (!A&M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  465.14;
+      when  (!A&M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  522.934;
+      when  (!A&M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  437.305;
+      when  (!A&M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  455.611;
+      when  (!A&M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  504.629;
+      when  (!A&!M0&M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  483.446;
+      when  (!A&!M0&M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  437.305;
+      when  (!A&!M0&M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  455.611;
+      when  (!A&!M0&M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  476.028;
+      when  (!A&!M0&!M1&S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  494.334;
+      when  (!A&!M0&!M1&S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  455.611;
+      when  (!A&!M0&!M1&!S&X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  473.917;
+      when  (!A&!M0&!M1&!S&!X2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  464.473;
+      related_pg_pin  VDD;
+    }
+  }
+  
+  cell (MX4XL) {
+    area  7.182;
+    pin (Y) {
+      direction : "output";
+      function : "((S1*((S0*D) + (!S0*C))) + (!S1*((S0*B) + (!S0*A))))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  227.043;
+      when  (A&B&C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  245.349;
+      when  (A&B&C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  245.349;
+      when  (A&B&C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  263.654;
+      when  (A&B&C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  279.61;
+      when  (A&B&C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  310.89;
+      when  (A&B&C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  255.091;
+      when  (A&B&C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.397;
+      when  (A&B&C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  236.785;
+      when  (A&B&!C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  255.091;
+      when  (A&B&!C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  297.915;
+      when  (A&B&!C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  329.195;
+      when  (A&B&!C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  266.271;
+      when  (A&B&!C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  297.551;
+      when  (A&B&!C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  284.577;
+      when  (A&B&!C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  315.856;
+      when  (A&B&!C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  292.584;
+      when  (A&!B&C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  297.915;
+      when  (A&!B&C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  255.091;
+      when  (A&!B&C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.397;
+      when  (A&!B&C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  287.167;
+      when  (A&!B&C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  305.473;
+      when  (A&!B&C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  264.833;
+      when  (A&!B&C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  283.139;
+      when  (A&!B&C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  302.326;
+      when  (A&!B&!C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.657;
+      when  (A&!B&!C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.657;
+      when  (A&!B&!C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  338.937;
+      when  (A&!B&!C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.828;
+      when  (A&!B&!C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  292.134;
+      when  (A&!B&!C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  294.319;
+      when  (A&!B&!C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  325.599;
+      when  (A&!B&!C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  236.785;
+      when  (!A&B&C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  255.091;
+      when  (!A&B&C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  310.89;
+      when  (!A&B&C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  316.221;
+      when  (!A&B&C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  289.352;
+      when  (!A&B&C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  320.632;
+      when  (!A&B&C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  320.632;
+      when  (!A&B&C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  325.963;
+      when  (!A&B&C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  246.527;
+      when  (!A&B&!C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  264.833;
+      when  (!A&B&!C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  305.473;
+      when  (!A&B&!C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  323.778;
+      when  (!A&B&!C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  276.013;
+      when  (!A&B&!C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.293;
+      when  (!A&B&!C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  292.134;
+      when  (!A&B&!C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  310.44;
+      when  (!A&B&!C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  279.245;
+      when  (!A&!B&C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  284.577;
+      when  (!A&!B&C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  297.551;
+      when  (!A&!B&C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  302.882;
+      when  (!A&!B&C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.828;
+      when  (!A&!B&C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  292.134;
+      when  (!A&!B&C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.293;
+      when  (!A&!B&C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  312.624;
+      when  (!A&!B&C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  288.987;
+      when  (!A&!B&!C&D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  294.319;
+      when  (!A&!B&!C&D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  292.134;
+      when  (!A&!B&!C&D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  310.44;
+      when  (!A&!B&!C&D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  260.49;
+      when  (!A&!B&!C&!D&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  278.795;
+      when  (!A&!B&!C&!D&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  278.795;
+      when  (!A&!B&!C&!D&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  297.101;
+      when  (!A&!B&!C&!D&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  288.108;
+      related_pg_pin  VDD;
+    }
+  }
+ 
+  cell (MXI3XL) {
+    area  5.814;
+    pin (Y) {
+      direction : "output";
+      function : "(!((S1*C) + (!S1*((S0*B) + (!S0*A)))))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  236.429;
+      when  (A&B&C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  254.735;
+      when  (A&B&C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  254.735;
+      when  (A&B&C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.041;
+      when  (A&B&C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  255.18;
+      when  (A&B&!C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  286.38;
+      when  (A&B&!C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.486;
+      when  (A&B&!C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  304.685;
+      when  (A&B&!C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  290.709;
+      when  (A&!B&C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  296.122;
+      when  (A&!B&C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  264.477;
+      when  (A&!B&C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  282.783;
+      when  (A&!B&C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  286.38;
+      when  (A&!B&!C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  304.685;
+      when  (A&!B&!C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  283.228;
+      when  (A&!B&!C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  314.427;
+      when  (A&!B&!C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  246.172;
+      when  (!A&B&C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  264.477;
+      when  (!A&B&C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  309.015;
+      when  (!A&B&C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  314.427;
+      when  (!A&B&C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  264.923;
+      when  (!A&B&!C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  296.122;
+      when  (!A&B&!C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  304.685;
+      when  (!A&B&!C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  322.991;
+      when  (!A&B&!C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  277.371;
+      when  (!A&!B&C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  282.783;
+      when  (!A&!B&C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  295.676;
+      when  (!A&!B&C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  301.089;
+      when  (!A&!B&C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  273.041;
+      when  (!A&!B&!C&S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  291.346;
+      when  (!A&!B&!C&S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  291.347;
+      when  (!A&!B&!C&!S0&S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  309.652;
+      when  (!A&!B&!C&!S0&!S1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  284.581;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (NAND2BXL) {
+    area  1.368;
+    pin (Y) {
+      direction : "output";
+      function : "(!((!AN)*B))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  64.9984;
+      when  (AN&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  67.0177;
+      when  (AN&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  91.8905;
+      when  (!AN&B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  98.662;
+      when  (!AN&!B);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  80.6422;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI32X4) {
+    area  8.208;
+    pin (Y) {
+      direction : "output";
+      function : "(!((B0+B1)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  501.125;
+      when  (A0&A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  414.175;
+      when  (A0&A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  568.531;
+      when  (A0&A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  630.369;
+      when  (A0&A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  405.723;
+      when  (A0&A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  318.772;
+      when  (A0&A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  473.129;
+      when  (A0&A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  685.516;
+      when  (A0&A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  444.878;
+      when  (A0&!A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  357.927;
+      when  (A0&!A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  512.284;
+      when  (A0&!A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  581.474;
+      when  (A0&!A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  332.235;
+      when  (A0&!A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  245.285;
+      when  (A0&!A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  399.641;
+      when  (A0&!A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  740.663;
+      when  (A0&!A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  557.728;
+      when  (!A0&A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  470.778;
+      when  (!A0&A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  625.134;
+      when  (!A0&A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  685.516;
+      when  (!A0&A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  470.777;
+      when  (!A0&A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  383.827;
+      when  (!A0&A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  538.183;
+      when  (!A0&A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  740.663;
+      when  (!A0&A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  625.134;
+      when  (!A0&!A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  538.183;
+      when  (!A0&!A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  692.539;
+      when  (!A0&!A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  740.663;
+      when  (!A0&!A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  545.054;
+      when  (!A0&!A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  693.211;
+      when  (!A0&!A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  693.211;
+      when  (!A0&!A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  720.682;
+      when  (!A0&!A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  541.657;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI32XL) {
+    area  3.078;
+    pin (Y) {
+      direction : "output";
+      function : "(!((B0+B1)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  78.5919;
+      when  (A0&A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  67.7246;
+      when  (A0&A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  88.3341;
+      when  (A0&A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  124.65;
+      when  (A0&A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  64.5538;
+      when  (A0&A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  53.6865;
+      when  (A0&A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  74.2959;
+      when  (A0&A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  129.982;
+      when  (A0&A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  69.9359;
+      when  (A0&!A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  59.0686;
+      when  (A0&!A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  79.678;
+      when  (A0&!A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  118.914;
+      when  (A0&!A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  55.0886;
+      when  (A0&!A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  44.2213;
+      when  (A0&!A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  64.8307;
+      when  (A0&!A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  135.314;
+      when  (A0&!A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  84.5499;
+      when  (!A0&A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.6826;
+      when  (!A0&A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  94.292;
+      when  (!A0&A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  129.982;
+      when  (!A0&A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.6826;
+      when  (!A0&A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  62.8153;
+      when  (!A0&A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  83.4247;
+      when  (!A0&A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  135.314;
+      when  (!A0&A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  94.292;
+      when  (!A0&!A1&A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  83.4247;
+      when  (!A0&!A1&A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  104.034;
+      when  (!A0&!A1&A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  135.314;
+      when  (!A0&!A1&A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  120.934;
+      when  (!A0&!A1&!A2&B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  140.513;
+      when  (!A0&!A1&!A2&B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  140.513;
+      when  (!A0&!A1&!A2&!B0&B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  106.488;
+      when  (!A0&!A1&!A2&!B0&!B1);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.8789;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI33X1) {
+    area  2.736;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((B0+B1)+B2)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  152.359;
+      when  (A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.779;
+      when  (A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.019;
+      when  (A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  143.018;
+      when  (A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  137.259;
+      when  (A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  108.833;
+      when  (A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  180.863;
+      when  (A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.676;
+      when  (A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.779;
+      when  (A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  103.198;
+      when  (A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  140.439;
+      when  (A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  118.437;
+      when  (A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.678;
+      when  (A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  84.2529;
+      when  (A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  156.282;
+      when  (A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  242.823;
+      when  (A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  137.259;
+      when  (A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.678;
+      when  (A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  149.919;
+      when  (A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.917;
+      when  (A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  122.158;
+      when  (A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  93.733;
+      when  (A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.762;
+      when  (A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  218.084;
+      when  (A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  108.833;
+      when  (A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  84.2529;
+      when  (A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  121.493;
+      when  (A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  99.492;
+      when  (A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  93.733;
+      when  (A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  65.3075;
+      when  (A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  137.337;
+      when  (A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  254.971;
+      when  (A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.019;
+      when  (!A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  140.439;
+      when  (!A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  177.679;
+      when  (!A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.678;
+      when  (!A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  149.919;
+      when  (!A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  121.493;
+      when  (!A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  193.522;
+      when  (!A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  242.823;
+      when  (!A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  143.018;
+      when  (!A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  118.437;
+      when  (!A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  155.678;
+      when  (!A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  133.676;
+      when  (!A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.917;
+      when  (!A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  99.492;
+      when  (!A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  171.521;
+      when  (!A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  254.971;
+      when  (!A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  180.862;
+      when  (!A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  156.282;
+      when  (!A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  193.522;
+      when  (!A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  171.521;
+      when  (!A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  165.762;
+      when  (!A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  137.337;
+      when  (!A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  209.366;
+      when  (!A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  254.971;
+      when  (!A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  157.475;
+      when  (!A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  194.432;
+      when  (!A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  194.432;
+      when  (!A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.901;
+      when  (!A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  169.693;
+      when  (!A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.901;
+      when  (!A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.901;
+      when  (!A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  220.104;
+      when  (!A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  157.412;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI33X2) {
+    area  7.524;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((B0+B1)+B2)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  294.777;
+      when  (A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  246.452;
+      when  (A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  322.723;
+      when  (A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  278.364;
+      when  (A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  265.959;
+      when  (A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  208.807;
+      when  (A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  355.719;
+      when  (A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  425.419;
+      when  (A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  246.452;
+      when  (A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  198.126;
+      when  (A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  274.398;
+      when  (A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.038;
+      when  (A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  217.634;
+      when  (A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.482;
+      when  (A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.394;
+      when  (A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  452.643;
+      when  (A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  265.959;
+      when  (A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  217.634;
+      when  (A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  293.905;
+      when  (A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  249.546;
+      when  (A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  237.141;
+      when  (A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  179.989;
+      when  (A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  326.901;
+      when  (A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  400.203;
+      when  (A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  208.807;
+      when  (A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.482;
+      when  (A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  236.753;
+      when  (A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  192.394;
+      when  (A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  179.989;
+      when  (A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  122.837;
+      when  (A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  269.749;
+      when  (A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  479.867;
+      when  (A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  322.723;
+      when  (!A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  274.398;
+      when  (!A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  350.669;
+      when  (!A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  306.31;
+      when  (!A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  293.905;
+      when  (!A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  236.753;
+      when  (!A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  383.665;
+      when  (!A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  452.643;
+      when  (!A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  278.363;
+      when  (!A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  230.038;
+      when  (!A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  306.31;
+      when  (!A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  261.95;
+      when  (!A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  249.546;
+      when  (!A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  192.394;
+      when  (!A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  339.306;
+      when  (!A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  479.867;
+      when  (!A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  355.719;
+      when  (!A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.394;
+      when  (!A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  383.665;
+      when  (!A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  339.306;
+      when  (!A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  326.901;
+      when  (!A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  269.749;
+      when  (!A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  416.661;
+      when  (!A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  479.867;
+      when  (!A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  285.032;
+      when  (!A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  360.101;
+      when  (!A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  360.102;
+      when  (!A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  434.332;
+      when  (!A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  307.661;
+      when  (!A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  434.332;
+      when  (!A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  434.332;
+      when  (!A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  438.881;
+      when  (!A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  303.132;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI33X4) {
+    area  9.918;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((B0+B1)+B2)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  581.345;
+      when  (A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  485.943;
+      when  (A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  637.948;
+      when  (A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  550.998;
+      when  (A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  525.098;
+      when  (A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  412.456;
+      when  (A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  705.354;
+      when  (A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  823.039;
+      when  (A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  485.943;
+      when  (A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  390.541;
+      when  (A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  542.546;
+      when  (A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  455.595;
+      when  (A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  429.696;
+      when  (A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  317.053;
+      when  (A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  609.952;
+      when  (A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  878.186;
+      when  (A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  525.098;
+      when  (A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  429.696;
+      when  (A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  581.701;
+      when  (A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  494.75;
+      when  (A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  468.851;
+      when  (A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  356.208;
+      when  (A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  649.107;
+      when  (A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  774.144;
+      when  (A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  412.455;
+      when  (A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  317.053;
+      when  (A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  469.058;
+      when  (A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  382.108;
+      when  (A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  356.208;
+      when  (A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  243.566;
+      when  (A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  536.464;
+      when  (A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  933.333;
+      when  (A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  637.948;
+      when  (!A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  542.546;
+      when  (!A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  694.551;
+      when  (!A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  607.601;
+      when  (!A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  581.701;
+      when  (!A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  469.059;
+      when  (!A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  761.957;
+      when  (!A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  878.187;
+      when  (!A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  550.997;
+      when  (!A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  455.595;
+      when  (!A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  607.6;
+      when  (!A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  520.65;
+      when  (!A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  494.75;
+      when  (!A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  382.108;
+      when  (!A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  675.006;
+      when  (!A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  933.333;
+      when  (!A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  705.354;
+      when  (!A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  609.951;
+      when  (!A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  761.957;
+      when  (!A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  675.006;
+      when  (!A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  649.106;
+      when  (!A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  536.464;
+      when  (!A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  829.362;
+      when  (!A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  933.334;
+      when  (!A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  546.606;
+      when  (!A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  696.11;
+      when  (!A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  696.11;
+      when  (!A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  843.985;
+      when  (!A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  592.068;
+      when  (!A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  843.984;
+      when  (!A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  843.985;
+      when  (!A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  868.233;
+      when  (!A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  596.667;
+      related_pg_pin  VDD;
+    }
+  }
+  cell (OAI33XL) {
+    area  3.078;
+    pin (Y) {
+      direction : "output";
+      function : "(!(((B0+B1)+B2)*((A0+A1)+A2)))";
+    }
+    pg_pin (VDD) {
+      pg_type  primary_power;
+      voltage_name  VDD;
+    }
+    pg_pin (VSS) {
+      pg_type  primary_ground;
+      voltage_name  VSS;
+    }
+    leakage_power () {
+      value  90.9598;
+      when  (A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  76.9217;
+      when  (A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  96.9178;
+      when  (A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  86.0505;
+      when  (A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.3038;
+      when  (A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  67.4565;
+      when  (A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  106.66;
+      when  (A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  167.484;
+      when  (A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  76.9217;
+      when  (A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  62.8835;
+      when  (A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.8796;
+      when  (A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  72.0123;
+      when  (A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  68.2656;
+      when  (A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  53.4183;
+      when  (A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.6217;
+      when  (A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  172.816;
+      when  (A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.3037;
+      when  (A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  68.2656;
+      when  (A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  88.2617;
+      when  (A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  77.3944;
+      when  (A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.6477;
+      when  (A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  58.8004;
+      when  (A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  98.0038;
+      when  (A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  161.747;
+      when  (A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  67.4565;
+      when  (A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  53.4183;
+      when  (A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.4144;
+      when  (A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  62.5471;
+      when  (A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  58.8004;
+      when  (A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  43.9532;
+      when  (A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  83.1566;
+      when  (A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  178.147;
+      when  (A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  96.9178;
+      when  (!A0&A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  82.8796;
+      when  (!A0&A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  102.876;
+      when  (!A0&A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.0085;
+      when  (!A0&A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  88.2617;
+      when  (!A0&A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  73.4145;
+      when  (!A0&A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.618;
+      when  (!A0&A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  172.816;
+      when  (!A0&A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  86.0505;
+      when  (!A0&A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  72.0123;
+      when  (!A0&A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.0084;
+      when  (!A0&A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  81.1412;
+      when  (!A0&A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  77.3944;
+      when  (!A0&A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  62.5472;
+      when  (!A0&A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  101.751;
+      when  (!A0&A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  178.147;
+      when  (!A0&A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  106.66;
+      when  (!A0&!A1&A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  92.6217;
+      when  (!A0&!A1&A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  112.618;
+      when  (!A0&!A1&A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  101.751;
+      when  (!A0&!A1&A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  98.0038;
+      when  (!A0&!A1&A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  83.1566;
+      when  (!A0&!A1&A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  122.36;
+      when  (!A0&!A1&A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  178.147;
+      when  (!A0&!A1&A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  121.41;
+      when  (!A0&!A1&!A2&B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  141.375;
+      when  (!A0&!A1&!A2&B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  141.375;
+      when  (!A0&!A1&!A2&B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.91;
+      when  (!A0&!A1&!A2&B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  130.307;
+      when  (!A0&!A1&!A2&!B0&B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.91;
+      when  (!A0&!A1&!A2&!B0&B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  160.91;
+      when  (!A0&!A1&!A2&!B0&!B1&B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  127.468;
+      when  (!A0&!A1&!A2&!B0&!B1&!B2);
+      related_pg_pin  VDD;
+    }
+    leakage_power () {
+      value  99.9799;
+      related_pg_pin  VDD;
+    }
+  }
+  }
