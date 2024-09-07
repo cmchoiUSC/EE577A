@@ -1,8 +1,8 @@
 # Test file for EE577A Lab 1
 
-import re
+# import re
 
-input_file = 'LiberateResults.txt'
+# input_file = 'LiberateResults.txt'
 # output_file = 'Results.txt'
 
 
@@ -43,6 +43,33 @@ input_file = 'LiberateResults.txt'
 #     output.write("hello")
 
 
+
+
+input_file = 'LiberateResults.txt'
+
+cell = False
+
+with open(input_file, 'r') as input:
+    content = input.read().split('\n')          # content is a list but content[0] is a str
+
+    words =content[93].split()
+
+    for x in content:
+        for words in x.split():
+            if cell == True:
+                print(words)
+                cell = False
+            if words == "cell":
+                cell = True
+
+                
+        
+
+    
+
+    # for x in content.index:
+    #     if (content[x] == "c"):
+    #         print(content[x+1:x+4])
 
 
 
