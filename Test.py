@@ -52,7 +52,7 @@ cell = False
 with open(input_file, 'r') as input:
     content = input.read().split('\n')          # content is a list but content[0] is a str
 
-    words =content[93].split()
+    # words = content[93].split()
 
     for x in content:
         for words in x.split():

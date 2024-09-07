@@ -1,0 +1,306 @@
+Pin names per function:
+
+Section ACHCONX2 pins:
+  Function CON = (!(((A*B)+(B*CI))+(CI*A)))  ==> uses pins: A, B, CI
+Total area = 12.654
+
+Section ADDHX1 pins:
+  Function S = (A^B)  ==> uses pins: A, B
+  Function CO = (A*B)  ==> uses pins: A, B
+Total area = 3.762
+
+Section ADDHX2 pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 5.13
+
+Section ADDHX4 pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 7.182
+
+Section ADDHXL pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 4.788
+
+Section AND2X4 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 2.736
+
+Section AND2X6 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 3.762
+
+Section AND2X8 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 4.446
+
+Section AND2XL pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 1.368
+
+Section AND3X1 pins:
+  Function Y = ((A*B)*C)  ==> uses pins: A, B, C
+Total area = 2.394
+
+Section AND3X2 pins:
+  Function Y = ((A*B)*C)  ==> uses pins: A, B, C
+Total area = 2.736
+
+Section AND4X1 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 2.394
+
+Section AND4X2 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 3.078
+
+Section AND4X4 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 3.762
+
+Section AO21X1 pins:
+  Function Y = ((A0*A1)+B0)  ==> uses pins: A0, A1, B0
+Total area = 2.394
+
+Section AO21X2 pins:
+  Function Y = ((A0*A1)+B0)  ==> uses pins: A0, A1, B0
+Total area = 2.736
+
+Section AO22X2 pins:
+  Function Y = ((A0*A1)+(B0*B1))  ==> uses pins: A0, A1, B0, B1
+Total area = 3.078
+
+Section AOI211X1 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 2.394
+
+Section AOI211X2 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 3.42
+
+Section AOI211X4 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 6.498
+
+Section AOI21X1 pins:
+  Function Y = (!((A0*A1)+B0))  ==> uses pins: A0, A1, B0
+Total area = 1.71
+
+Section AOI31X1 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 2.052
+
+Section AOI31X2 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 3.42
+
+Section AOI31X4 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 6.498
+
+Section AOI31XL pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 2.736
+
+Section BMXIX2 pins:
+  Function PPN = ((X2*((M0*A) + (!M0*S))) + (!X2*((M1*A) + (!M1*S))))  ==> uses pins: A, M0, M1, S, X2
+Total area = 7.524
+
+Section BMXIX4 pins:
+  Function PPN = ((X2*((M0*A) + (!M0*S))) + (!X2*((M1*A) + (!M1*S))))  ==> uses pins: A, M0, M1, S, X2
+Total area = 8.55
+
+Section MX4XL pins:
+  Function Y = ((S1*((S0*D) + (!S0*C))) + (!S1*((S0*B) + (!S0*A))))  ==> uses pins: A, B, C, D, S0, S1
+Total area = 7.182
+
+Section MXI3XL pins:
+  Function Y = (!((S1*C) + (!S1*((S0*B) + (!S0*A)))))  ==> uses pins: A, B, C, S0, S1
+Total area = 5.814
+
+Section NAND2BXL pins:
+  Function Y = (!((!AN)*B))  ==> uses pins: AN, B
+Total area = 1.368
+
+Section OAI32X4 pins:
+  Function Y = (!((B0+B1)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1
+Total area = 8.208
+
+Section OAI32XL pins:
+  Function Y = (!((B0+B1)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1
+Total area = 3.078
+
+Section OAI33X1 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1, B2
+Total area = 2.736
+
+Section OAI33X2 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1, B2
+Total area = 7.524
+
+Section OAI33X4 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1, B2
+Total area = 9.918
+
+Section OAI33XL pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: A0, A1, A2, B0, B1, B2
+Total area = 3.078
+
+
+ +--------------------------------------------------------------+----------------------------------------------+
+| Expression                                                   |                    Gates                     |
++--------------------------------------------------------------+----------------------------------------------+
+| ['(!((P4*P2) + (!P4*((P3*P1) + (!P3*P0)))))']                |                  ['MXI3XL']                  |
+| ['((P0*P1)+(P2*P3))']                                        |                  ['AO22X2']                  |
+| ['(P0*P1)', '(P0^P1)']                                       |   ['ADDHX1', 'ADDHX2', 'ADDHX4', 'ADDHXL']   |
+| ['(!(((P3+P4)+P5)*((P0+P1)+P2)))']                           | ['OAI33X1', 'OAI33X2', 'OAI33X4', 'OAI33XL'] |
+| ['(!((P3+P4)*((P0+P1)+P2)))']                                |            ['OAI32X4', 'OAI32XL']            |
+| ['(!(((P0*P1)+(P1*P2))+(P2*P0)))']                           |                 ['ACHCONX2']                 |
+| ['((P5*((P4*P3) + (!P4*P2))) + (!P5*((P4*P1) + (!P4*P0))))'] |                  ['MX4XL']                   |
+| ['(!(((P0*P1)+P2)+P3))']                                     |     ['AOI211X1', 'AOI211X2', 'AOI211X4']     |
+| ['(!((!P0)*P1))']                                            |                 ['NAND2BXL']                 |
+| ['(!(((P0*P1)*P2)+P3))']                                     | ['AOI31X1', 'AOI31X2', 'AOI31X4', 'AOI31XL'] |
+| ['(P0*P1)']                                                  |   ['AND2X4', 'AND2X6', 'AND2X8', 'AND2XL']   |
+| ['(((P0*P1)*P2)*P3)']                                        |        ['AND4X1', 'AND4X2', 'AND4X4']        |
+| ['((P4*((P1*P0) + (!P1*P3))) + (!P4*((P2*P0) + (!P2*P3))))'] |             ['BMXIX2', 'BMXIX4']             |
+| ['(!((P0*P1)+P2))']                                          |                 ['AOI21X1']                  |
+| ['((P0*P1)+P2)']                                             |             ['AO21X1', 'AO21X2']             |
+| ['((P0*P1)*P2)']                                             |             ['AND3X1', 'AND3X2']             |
++--------------------------------------------------------------+----------------------------------------------+
+
+
+Maximum Leakage Scenarios For Each Logic Group
+
+Expression ['(!((P4*P2) + (!P4*((P3*P1) + (!P3*P0)))))']
++--------+--------------------+---------------+
+| Gates  |      MinTerm       | Leakage Value |
++--------+--------------------+---------------+
+| MXI3XL | !P1*P2*!P3*!P4*!P5 |    322.991    |
++--------+--------------------+---------------+
+
+Expression ['((P0*P1)+(P2*P3))']
++--------+---------------+---------------+
+| Gates  |    MinTerm    | Leakage Value |
++--------+---------------+---------------+
+| AO22X2 | !P1*!P2*P3*P4 |    185.154    |
++--------+---------------+---------------+
+
+Expression ['(P0*P1)', '(P0^P1)']
++--------+---------+---------------+
+| Gates  | MinTerm | Leakage Value |
++--------+---------+---------------+
+| ADDHX1 |  P1*P2  |    285.381    |
+| ADDHX2 |  P1*P2  |    362.943    |
+| ADDHX4 |  P1*P2  |    580.379    |
+| ADDHXL |  P1*P2  |    260.314    |
++--------+---------+---------------+
+
+Expression ['(!(((P3+P4)+P5)*((P0+P1)+P2)))']
++---------+------------------------+---------------+
+| Gates   |        MinTerm         | Leakage Value |
++---------+------------------------+---------------+
+| OAI33X1 | P1*!P2*!P3*!P4*!P5*!P6 |    254.971    |
+| OAI33X2 | P1*!P2*!P3*!P4*!P5*!P6 |    479.867    |
+| OAI33X4 | !P1*!P2*P3*!P4*!P5*!P6 |    933.334    |
+| OAI33XL | P1*!P2*!P3*!P4*!P5*!P6 |    178.147    |
++---------+------------------------+---------------+
+
+Expression ['(!((P3+P4)*((P0+P1)+P2)))']
++---------+--------------------+---------------+
+| Gates   |      MinTerm       | Leakage Value |
++---------+--------------------+---------------+
+| OAI32X4 | P1*!P2*!P3*!P4*!P5 |    740.663    |
+| OAI32XL | !P1*!P2*!P3*P4*!P5 |    140.513    |
++---------+--------------------+---------------+
+
+Expression ['(!(((P0*P1)+(P1*P2))+(P2*P0)))']
++----------+------------+---------------+
+| Gates    |  MinTerm   | Leakage Value |
++----------+------------+---------------+
+| ACHCONX2 | !P1*!P2*P3 |    690.263    |
++----------+------------+---------------+
+
+Expression ['((P5*((P4*P3) + (!P4*P2))) + (!P5*((P4*P1) + (!P4*P0))))']
++-------+-----------------------+---------------+
+| Gates |        MinTerm        | Leakage Value |
++-------+-----------------------+---------------+
+| MX4XL | P1*!P2*!P3*P4*!P5*!P6 |    338.937    |
++-------+-----------------------+---------------+
+
+Expression ['(!(((P0*P1)+P2)+P3))']
++----------+-----------------+---------------+
+| Gates    |     MinTerm     | Leakage Value |
++----------+-----------------+---------------+
+| AOI211X1 |  P1*!P2*!P3*!P4 |    187.443    |
+| AOI211X2 | !P1*!P2*!P3*!P4 |    343.435    |
+| AOI211X4 | !P1*!P2*!P3*!P4 |    674.752    |
++----------+-----------------+---------------+
+
+Expression ['(!((!P0)*P1))']
++----------+---------+---------------+
+| Gates    | MinTerm | Leakage Value |
++----------+---------+---------------+
+| NAND2BXL | !P1*!P2 |     98.662    |
++----------+---------+---------------+
+
+Expression ['(!(((P0*P1)*P2)+P3))']
++---------+-----------------+---------------+
+| Gates   |     MinTerm     | Leakage Value |
++---------+-----------------+---------------+
+| AOI31X1 | !P1*!P2*!P3*!P4 |    160.783    |
+| AOI31X2 | !P1*!P2*!P3*!P4 |     309.82    |
+| AOI31X4 | !P1*!P2*!P3*!P4 |    615.768    |
+| AOI31XL |  P1*P2*!P3*!P4  |    111.656    |
++---------+-----------------+---------------+
+
+Expression ['(P0*P1)']
++--------+---------+---------------+
+| Gates  | MinTerm | Leakage Value |
++--------+---------+---------------+
+| AND2X4 |  P1*P2  |    266.981    |
+| AND2X6 |  P1*P2  |    428.899    |
+| AND2X8 |  P1*P2  |    521.181    |
+| AND2XL |  P1*P2  |    91.8907    |
++--------+---------+---------------+
+
+Expression ['(((P0*P1)*P2)*P3)']
++--------+-------------+---------------+
+| Gates  |   MinTerm   | Leakage Value |
++--------+-------------+---------------+
+| AND4X1 | P1*P2*P3*P4 |    153.389    |
+| AND4X2 | P1*P2*P3*P4 |    197.559    |
+| AND4X4 | P1*P2*P3*P4 |    341.291    |
++--------+-------------+---------------+
+
+Expression ['((P4*((P1*P0) + (!P1*P3))) + (!P4*((P2*P0) + (!P2*P3))))']
++--------+-------------------+---------------+
+| Gates  |      MinTerm      | Leakage Value |
++--------+-------------------+---------------+
+| BMXIX2 | P1*!P2*P3*!P4*!P5 |    420.076    |
+| BMXIX4 | P1*!P2*P3*!P4*!P5 |    522.934    |
++--------+-------------------+---------------+
+
+Expression ['(!((P0*P1)+P2))']
++---------+------------+---------------+
+| Gates   |  MinTerm   | Leakage Value |
++---------+------------+---------------+
+| AOI21X1 | P1*!P2*!P3 |    132.168    |
++---------+------------+---------------+
+
+Expression ['((P0*P1)+P2)']
++--------+------------+---------------+
+| Gates  |  MinTerm   | Leakage Value |
++--------+------------+---------------+
+| AO21X1 | P1*!P2*!P3 |    135.817    |
+| AO21X2 | P1*!P2*!P3 |    169.209    |
++--------+------------+---------------+
+
+Expression ['((P0*P1)*P2)']
++--------+----------+---------------+
+| Gates  | MinTerm  | Leakage Value |
++--------+----------+---------------+
+| AND3X1 | P1*P2*P3 |    128.861    |
+| AND3X2 | P1*P2*P3 |     173.03    |
++--------+----------+---------------+
