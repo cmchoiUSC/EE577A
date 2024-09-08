@@ -127,15 +127,7 @@ with open('Results.txt', 'w') as results:
 
 
 
-
-
-
-
-
     #### Part II ####
-
-    
-
 
     md = MultiDict()
     table = PrettyTable()
@@ -146,50 +138,11 @@ with open('Results.txt', 'w') as results:
         md.add(str(gFunctions[x].getPinNames()), gFunctions[x].name)
 
     for x in range(md.getSize()):
-        print(md.getKey(x))
+        # print(md.getKey(x))
         table.add_row([md.getKey(x), md.get(md.getKey(x))])
-        
-
-    # for x in range(md.getSize()):
-    #     table.add_row()
-    
-    # for i in range(len(gFunctions)):  
-    #     for j in range(len(gFunctions[i].pin)):
-    #         md.add(gFunctions[i].pin[j].function, gFunctions[i].name)
-    #         print(gFunctions[i].pin[j].function, gFunctions[i].name)
-
-    
-    # for i in range(len(gFunctions)):  
-    #     for j in range(len(gFunctions[i].pin)):
-    #         table.add_row([gFunctions[i].pin[j].function, md.get(gFunctions[i].pin[j].function)])
-
-    # print(md.getSize())
 
     print("", file=results)
     print(table, file=results)
-
-
-
-
-
-md = MultiDict()
-md.add("Address1", "John")
-md.add("Address1", "Jane")
-md.add("address2", "123 Main St")
-md.add("address2", "1075 Godetia")
-md.add("address2", "48 Gresham Lane")
-md.add("Address 3", "94028")
-md.add("Address 3", "Mark")
-
-print(md.get("Address1"))  # Output: ["John", "Jane"]
-print(md.get("address2"))  # Output: ["123 Main St"]
-print(md.get("Address 3"))  # Output: ["123 Main St"]
-
-md.delete("Address1", "John")
-print(md.get("Address1"))  # Output: ["Jane"]
-
-md.clear()
-print(md._dict)  # Output: {}
 
 
 
