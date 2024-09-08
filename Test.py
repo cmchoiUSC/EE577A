@@ -34,7 +34,36 @@ with open(input_file, 'r') as input:
                 cellNames[-1].pin.update({name:function})
 
 
-            
 
-for x in cellNames:
-    print(x.name, x.area, x.pin)
+print("Pin names per function: \n")
+            
+for cells in cellNames:
+    print("Section " + cells.name + " pins:")
+    for x in range(len(cells.pin)):
+        temp = list(cells.pin.values())[x].replace("("," ").replace(")"," ").replace("{"," ").replace("}"," ").replace("!"," ").replace("+"," ").replace("*"," ").replace("^"," ").split()
+        pins = []
+        for p in temp:
+            pins.append(p)
+
+        print("  Function " + list(cells.pin.keys())[x] + " = " + list(cells.pin.values())[x] + "  ==> uses pins: ", end='')
+        for p in range(len(pins)):
+            if (p == len(pins)-1):
+                print(pins[p])
+            else:
+                print(pins[p] + ", ", end='')
+    print("Total area = " + cells.area + "\n")
+
+# for x in cellNames:
+#     print(x.name, x.area, x.pin)
+
+
+# dict = {}
+
+# dict.update({"frog":"trunk"})
+# dict.update({"Charity":"plug"})
+
+# print(list(dict.keys())[1])
+# print(len(dict))
+
+# for x in range(len(dict)):
+#     print(list(dict.keys())[x])
