@@ -34,36 +34,22 @@ with open(input_file, 'r') as input:
                 cellNames[-1].pin.update({name:function})
 
 
+with open('Results.txt', 'w') as results:
+    print("Pin names per function: \n", file=results)
+                
+    for cells in cellNames:
+        print("Section " + cells.name + " pins:", file=results)
+        for x in range(len(cells.pin)):
+            temp = list(cells.pin.values())[x].replace("("," ").replace(")"," ").replace("{"," ").replace("}"," ").replace("!"," ").replace("+"," ").replace("*"," ").replace("^"," ").split()
+            pins = []
+            for p in temp:
+                if pins.count(p) < 1:
+                    pins.append(p)
 
-print("Pin names per function: \n")
-            
-for cells in cellNames:
-    print("Section " + cells.name + " pins:")
-    for x in range(len(cells.pin)):
-        temp = list(cells.pin.values())[x].replace("("," ").replace(")"," ").replace("{"," ").replace("}"," ").replace("!"," ").replace("+"," ").replace("*"," ").replace("^"," ").split()
-        pins = []
-        for p in temp:
-            pins.append(p)
-
-        print("  Function " + list(cells.pin.keys())[x] + " = " + list(cells.pin.values())[x] + "  ==> uses pins: ", end='')
-        for p in range(len(pins)):
-            if (p == len(pins)-1):
-                print(pins[p])
-            else:
-                print(pins[p] + ", ", end='')
-    print("Total area = " + cells.area + "\n")
-
-# for x in cellNames:
-#     print(x.name, x.area, x.pin)
-
-
-# dict = {}
-
-# dict.update({"frog":"trunk"})
-# dict.update({"Charity":"plug"})
-
-# print(list(dict.keys())[1])
-# print(len(dict))
-
-# for x in range(len(dict)):
-#     print(list(dict.keys())[x])
+            print("  Function " + list(cells.pin.keys())[x] + " = " + list(cells.pin.values())[x] + "  ==> uses pins: ", end='', file=results)
+            for p in range(len(pins)):
+                if (p == len(pins)-1):
+                    print(pins[p], file=results)
+                else:
+                    print(pins[p] + ", ", end='', file=results)
+        print("Total area = " + cells.area + "\n", file=results)

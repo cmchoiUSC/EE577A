@@ -1,1 +1,150 @@
-hello
+Pin names per function: 
+
+Section ACHCONX2 pins:
+  Function CON = (!(((A*B)+(B*CI))+(CI*A)))  ==> uses pins: A, B, CI
+Total area = 12.654
+
+Section ADDHX1 pins:
+  Function S = (A^B)  ==> uses pins: A, B
+  Function CO = (A*B)  ==> uses pins: A, B
+Total area = 3.762
+
+Section ADDHX2 pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 5.13
+
+Section ADDHX4 pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 7.182
+
+Section ADDHXL pins:
+  Function CO = (A*B)  ==> uses pins: A, B
+  Function S = (A^B)  ==> uses pins: A, B
+Total area = 4.788
+
+Section AND2X4 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 2.736
+
+Section AND2X6 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 3.762
+
+Section AND2X8 pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 4.446
+
+Section AND2XL pins:
+  Function Y = (A*B)  ==> uses pins: A, B
+Total area = 1.368
+
+Section AND3X1 pins:
+  Function Y = ((A*B)*C)  ==> uses pins: A, B, C
+Total area = 2.394
+
+Section AND3X2 pins:
+  Function Y = ((A*B)*C)  ==> uses pins: A, B, C
+Total area = 2.736
+
+Section AND4X1 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 2.394
+
+Section AND4X2 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 3.078
+
+Section AND4X4 pins:
+  Function Y = (((A*B)*C)*D)  ==> uses pins: A, B, C, D
+Total area = 3.762
+
+Section AO21X1 pins:
+  Function Y = ((A0*A1)+B0)  ==> uses pins: A0, A1, B0
+Total area = 2.394
+
+Section AO21X2 pins:
+  Function Y = ((A0*A1)+B0)  ==> uses pins: A0, A1, B0
+Total area = 2.736
+
+Section AO22X2 pins:
+  Function Y = ((A0*A1)+(B0*B1))  ==> uses pins: A0, A1, B0, B1
+Total area = 3.078
+
+Section AOI211X1 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 2.394
+
+Section AOI211X2 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 3.42
+
+Section AOI211X4 pins:
+  Function Y = (!(((A0*A1)+B0)+C0))  ==> uses pins: A0, A1, B0, C0
+Total area = 6.498
+
+Section AOI21X1 pins:
+  Function Y = (!((A0*A1)+B0))  ==> uses pins: A0, A1, B0
+Total area = 1.71
+
+Section AOI31X1 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 2.052
+
+Section AOI31X2 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 3.42
+
+Section AOI31X4 pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 6.498
+
+Section AOI31XL pins:
+  Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0
+Total area = 2.736
+
+Section BMXIX2 pins:
+  Function PPN = ((X2*((M0*A)  ==> uses pins: X2, M0, A
+Total area = 7.524
+
+Section BMXIX4 pins:
+  Function PPN = ((X2*((M0*A)  ==> uses pins: X2, M0, A
+Total area = 8.55
+
+Section MX4XL pins:
+  Function Y = ((S1*((S0*D)  ==> uses pins: S1, S0, D
+Total area = 7.182
+
+Section MXI3XL pins:
+  Function Y = (!((S1*C)  ==> uses pins: S1, C
+Total area = 5.814
+
+Section NAND2BXL pins:
+  Function Y = (!((!AN)*B))  ==> uses pins: AN, B
+Total area = 1.368
+
+Section OAI32X4 pins:
+  Function Y = (!((B0+B1)*((A0+A1)+A2)))  ==> uses pins: B0, B1, A0, A1, A2
+Total area = 8.208
+
+Section OAI32XL pins:
+  Function Y = (!((B0+B1)*((A0+A1)+A2)))  ==> uses pins: B0, B1, A0, A1, A2
+Total area = 3.078
+
+Section OAI33X1 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: B0, B1, B2, A0, A1, A2
+Total area = 2.736
+
+Section OAI33X2 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: B0, B1, B2, A0, A1, A2
+Total area = 7.524
+
+Section OAI33X4 pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: B0, B1, B2, A0, A1, A2
+Total area = 9.918
+
+Section OAI33XL pins:
+  Function Y = (!(((B0+B1)+B2)*((A0+A1)+A2)))  ==> uses pins: B0, B1, B2, A0, A1, A2
+Total area = 3.078
+
