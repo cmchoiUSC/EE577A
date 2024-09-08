@@ -74,7 +74,7 @@ with open(input_file, 'r') as input:
 
     for i,val in enumerate(content):
         # print(i,val)
-        for j, words in enumerate(val.split()):
+        for j, words in enumerate(val.split()):                                                                     # Looping through everything to isolate information and store it in cell variables.
             # print(j, words)
             if words == "cell":
                 name = val.split()[j+1].replace("(","").replace(")","").replace("{","").replace("}","")
