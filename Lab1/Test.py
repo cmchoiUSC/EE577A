@@ -129,20 +129,19 @@ with open('Results.txt', 'w') as results:
 
     #### Part II ####
 
-    md = MultiDict()
-    table = PrettyTable()
-    table.field_names = ["Expression", "Gates"]
-    table.align["Expression"] = "l"
+    md = MultiDict()                                    # Creating MultiDicitonary
+    table = PrettyTable()                               # Creating Table
+    table.field_names = ["Expression", "Gates"]         # Creating column labels
+    table.align["Expression"] = "l"                     # Aligning left column to left side to match example
 
-    for x in range(len(gFunctions)):
-        md.add(str(gFunctions[x].getPinNames()), gFunctions[x].name)
-
-    for x in range(md.getSize()):
-        # print(md.getKey(x))
-        table.add_row([md.getKey(x), md.get(md.getKey(x))])
-
+    for x in range(len(gFunctions)):                                              # Looping through Cells 
+        md.add(frozenset(gFunctions[x].getPinNames()), gFunctions[x].name)        # Putting cell pin names into dictionary with cell name
+    for x in range(md.getSize()):                                                 # Looping through the dictionary
+        table.add_row([list(md.getKey(x)), md.get(md.getKey(x))])                 # Adding dictionary to table
+    """
+        Note: pin names have been added into the dictionary as a frozenset so as to ignore the ordering of pins Ex: ([“A*B”, “A^B”] = [“A^B”, “A*B”] = “P1*P2/P1^P2”)
+              However, these are then changed back into lists when going into the table for formating reasons. 
+    """
     print("", file=results)
     print(table, file=results)
-
-
 
