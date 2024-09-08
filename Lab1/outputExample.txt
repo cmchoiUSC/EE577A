@@ -86,7 +86,7 @@ Total area = 6.498
 
 Section AOI21X1 pins:
   Function Y = (!((A0*A1)+B0))  ==> uses pins: A0, A1, B0
-Total area = 1.71
+Total area = 1.71 
 
 Section AOI31X1 pins:
   Function Y = (!(((A0*A1)*A2)+B0))  ==> uses pins: A0, A1, A2, B0

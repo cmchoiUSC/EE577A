@@ -1,5 +1,6 @@
 # Test file for EE577A Lab 1
 
+from prettytable import PrettyTable
 
 input_file = 'LiberateResults.txt'
 
@@ -13,6 +14,9 @@ class logicCell:
         self.area = 0.00
         self.pin = {}
 
+
+
+#### Parsing Code ####
 
 with open(input_file, 'r') as input:
     content = input.read().split('\n')          # content is a list but content[0] is a str
@@ -29,10 +33,14 @@ with open(input_file, 'r') as input:
                 cellNames[-1].area = area
             if words == "pin":
                 name = val.split()[j+1].replace("(","").replace(")","").replace("{","").replace("}","")
-            if words == "function":
-                function = val.split()[j+2].replace("\"","").replace(";","")
-                cellNames[-1].pin.update({name:function})
+        if "function" in val:
+            function = val.replace("function : ", "").replace(";", "").replace("      ", "").replace("\"", "")
+            cellNames[-1].pin.update({name:function})
 
+
+
+
+#### Writing Code ####
 
 with open('Results.txt', 'w') as results:
     print("Pin names per function: \n", file=results)
@@ -53,3 +61,26 @@ with open('Results.txt', 'w') as results:
                 else:
                     print(pins[p] + ", ", end='', file=results)
         print("Total area = " + cells.area + "\n", file=results)
+
+
+
+
+
+
+
+
+
+
+    #### Bracket Code ####
+
+    table = PrettyTable()
+    table.field_names = ["City name", "Area", "Population", "Annual Rainfall"]
+    table.add_row(["Adelaide", 1295, 1158259, 600.5])
+    table.add_row(["Brisbane", 5905, 1857594, 1146.4])
+    table.add_row(["Darwin", 112, 120900, 1714.7])
+    table.add_row(["Hobart", 1357, 205556, 619.5])
+    table.add_row(["Sydney", 2058, 4336374, 1214.8])
+    table.add_row(["Melbourne", 1566, 3806092, 646.9])
+    table.add_row(["Perth", 5386, 1554769, 869.4])
+    print("", file=results)
+    print(table, file=results)
