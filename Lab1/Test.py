@@ -8,16 +8,62 @@ input_file = 'LiberateResults.txt'
 cellNames = []
 
 
-class logicCell:
+class LogicCell:
     def __init__(self,name):
         self.name = name
         self.area = 0.00
         self.pin = []
 
+    def getPinNames(self):
+        ret = []
+        for x in self.pin:
+            ret.append(x.function)
+        return ret
+            
+
 class pin:
         def __init__(self,name,function):
             self.name = name
             self.function = function
+
+
+class MultiDict:
+    def __init__(self):
+        self._keys = []
+        self._dict = {}
+
+    def add(self, key, value):
+        if key not in self._dict:
+            self._keys.append(key)
+            self._dict[key] = []
+        self._dict[key].append(value)
+
+    def get(self, key):
+        return self._dict.get(key, [])
+    
+    def getKey(self, index):
+        if index < len(self._keys):
+            # return self._keys[index], self._dict[self._keys[index]][-1]
+            return self._keys[index]
+        else:
+            raise IndexError("Index out of range")
+    
+    def getSize(self):
+        return len(self._dict.keys())
+
+    def delete(self, key=None, value=None):
+        if key is not None and key in self._dict:
+            if value is not None and value in self._dict[key]:
+                if len(self._dict[key]) == 1:
+                    del self._dict[key]
+                    self._keys.remove(key)
+                else:
+                    self._dict[key].remove(value)
+            else:
+                raise ValueError("Value not found")
+
+    def clear(self):
+        self._dict.clear()
 
 
 
@@ -32,7 +78,7 @@ with open(input_file, 'r') as input:
             # print(j, words)
             if words == "cell":
                 name = val.split()[j+1].replace("(","").replace(")","").replace("{","").replace("}","")
-                cellNames.append(logicCell(name))
+                cellNames.append(LogicCell(name))
             if words == "area":
                 area = content[i].split()[1].replace(";","")
                 cellNames[-1].area = area
@@ -51,7 +97,7 @@ with open('Results.txt', 'w') as results:
     print("Pin names per function: \n", file=results)                               # Prints initial document line
 
     for i in range(len(cellNames)):                                                 # Begin print section for each cell
-        print("Section " + cellNames[i].name + " pins:", file=results)              # Print name for each cell (first line)
+        print(f"Section {cellNames[i].name} pins:", file=results)                   # Print name for each cell (first line)
         
         for j in range(len(cellNames[i].pin)):                                      # Looping through each cell
             temp = cellNames[i].pin[j].function.replace("("," ").replace(")"," ").replace("{"," ").replace("}"," ").replace("!"," ").replace("+"," ").replace("*"," ").replace("^"," ").split()
@@ -59,7 +105,7 @@ with open('Results.txt', 'w') as results:
             for p in temp:                                                          # For loop to add the cleaned up pins labels into the pins array
                 if pins.count(p) < 1: pins.append(p)                                # Only add the pin if it hasn't already been added before
 
-            print("  Function "  + cellNames[i].pin[j].name + " = " + cellNames[i].pin[j].function + "  ==> uses pins: ", end='', file=results)     # First half of pin print statement
+            print(f"  Function {cellNames[i].pin[j].name} = {cellNames[i].pin[j].function}  ==> uses pins: ", end='', file=results)     # First half of pin print statement
             for p in range(len(pins)):                                              # Printing through the pins array... need to make sure the last pin doesn't print with a comma
                 if p == len(pins)-1: print(pins[p], file=results)
                 else: print(pins[p] + ", ", end='', file=results)
@@ -76,7 +122,7 @@ with open('Results.txt', 'w') as results:
                 
 
 
-        print("Total area = " + cellNames[i].area + "\n", file=results)             # Print area for each cell (last line)
+        print(f"Total area = {cellNames[i].area}\n", file=results)             # Print area for each cell (last line)
 
 
 
@@ -86,21 +132,64 @@ with open('Results.txt', 'w') as results:
 
 
 
-    #### Bracket Code ####
+    #### Part II ####
 
+    
+
+
+    md = MultiDict()
     table = PrettyTable()
     table.field_names = ["Expression", "Gates"]
+    table.align["Expression"] = "l"
 
+    for x in range(len(gFunctions)):
+        md.add(str(gFunctions[x].getPinNames()), gFunctions[x].name)
 
-    for i in range(len(gFunctions)):  
-        for j in range(len(gFunctions[i].pin)):
-            table.add_row([gFunctions[i].pin[j].function, "['" + gFunctions[i].name + "']"])
+    for x in range(md.getSize()):
+        print(md.getKey(x))
+        table.add_row([md.getKey(x), md.get(md.getKey(x))])
+        
 
+    # for x in range(md.getSize()):
+    #     table.add_row()
+    
+    # for i in range(len(gFunctions)):  
+    #     for j in range(len(gFunctions[i].pin)):
+    #         md.add(gFunctions[i].pin[j].function, gFunctions[i].name)
+    #         print(gFunctions[i].pin[j].function, gFunctions[i].name)
 
+    
+    # for i in range(len(gFunctions)):  
+    #     for j in range(len(gFunctions[i].pin)):
+    #         table.add_row([gFunctions[i].pin[j].function, md.get(gFunctions[i].pin[j].function)])
+
+    # print(md.getSize())
 
     print("", file=results)
     print(table, file=results)
 
+
+
+
+
+md = MultiDict()
+md.add("Address1", "John")
+md.add("Address1", "Jane")
+md.add("address2", "123 Main St")
+md.add("address2", "1075 Godetia")
+md.add("address2", "48 Gresham Lane")
+md.add("Address 3", "94028")
+md.add("Address 3", "Mark")
+
+print(md.get("Address1"))  # Output: ["John", "Jane"]
+print(md.get("address2"))  # Output: ["123 Main St"]
+print(md.get("Address 3"))  # Output: ["123 Main St"]
+
+md.delete("Address1", "John")
+print(md.get("Address1"))  # Output: ["Jane"]
+
+md.clear()
+print(md._dict)  # Output: {}
 
 
 
