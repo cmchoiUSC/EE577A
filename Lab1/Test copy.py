@@ -34,11 +34,11 @@ class MultiDict:
         self.keys = []
         self.dict = {}
 
-    def add(self, key, tup):
+    def add(self, key, value):
         if key not in self.dict:
             self.keys.append(key)
             self.dict[key] = []
-        self.dict[key].append(tup)
+        self.dict[key].append(value)
 
     def get(self, key):
         return self.dict.get(key, [])
@@ -139,7 +139,6 @@ with open('Results.txt', 'w') as results:
     #### Part II ####
 
     md = MultiDict()                                    # Creating MultiDicitonary
-    ml = MultiDict()
     table = PrettyTable()                               # Creating Table
     table.field_names = ["Expression", "Gates"]         # Creating column labels
     table.align["Expression"] = "l"                     # Aligning left column to left side to match example
@@ -154,55 +153,20 @@ with open('Results.txt', 'w') as results:
         for p in range(len(pins)):
             x.lgate = x.lgate.replace(pins[p], f"P{p}").replace("&","*")
 
-        # print((x.name, x.lgate, x.leak))
+        print((x.name, x.lgate, x.leak))
 
 
 
-    for x in range(len(gFunctions)):                                                                                        # Looping through Cells 
-        md.add(frozenset(gFunctions[x].getPinNames()), gFunctions[x].name)                                                  # Putting cell pin names into dictionary with cell name
-        ml.add(frozenset(gFunctions[x].getPinNames()), (gFunctions[x].name, gFunctions[x].lgate, gFunctions[x].leak))
-        # print(frozenset(gFunctions[x].getPinNames()), (gFunctions[x].name, gFunctions[x].lgate, gFunctions[x].leak))
-    for x in range(md.getSize()):                                                                                           # Looping through the dictionary
-        table.add_row([list(md.getKey(x)), md.get(md.getKey(x))])                                                           # Adding dictionary to table
+    for x in range(len(gFunctions)):                                              # Looping through Cells 
+        md.add(frozenset(gFunctions[x].getPinNames()), gFunctions[x].name)        # Putting cell pin names into dictionary with cell name
+    for x in range(md.getSize()):                                                 # Looping through the dictionary
+        table.add_row([list(md.getKey(x)), md.get(md.getKey(x))])                 # Adding dictionary to table
     """
         Note: pin names have been added into the dictionary as a frozenset so as to ignore the ordering of pins Ex: ([“A*B”, “A^B”] = [“A^B”, “A*B”] = “P1*P2/P1^P2”)
               However, these are then changed back into lists when going into the table for formating reasons. 
     """
     print("", file=results)
     print(table, file=results)
-
-    print("\n\nMaximum Leakage Scenarios For Each Logic Group\n ", file=results)
-
-    for x in range(ml.getSize()):
-        print(f"Expression {list(ml.getKey(x))}", file=results)
-
-        table = PrettyTable()
-        table.field_names = ["Gates", "MinTerm", "Leakage Value"]
-        table.align["Gates"] = "l"
-        
-
-        for y in range(len(ml.get(ml.getKey(x)))):
-            temp = ml.get(ml.getKey(x))[y]
-            table.add_row([temp[0], temp[1], temp[2]])
-            # print(temp[0], temp[1], temp[2])
-        
-        # print(ml.get(ml.getKey(x)), len(ml.get(ml.getKey(x))))
-
-
-        # for y in ml.getKey(x):
-        #     print(y, ml.get(y))
-
-
-        # for y in range(len(list(ml.getKey(x)))):
-            # print(ml.get(ml.getKey(y)))
-            # temp = ml.get(ml.getKey(y))[0]
-            # table.add_row([temp[0], temp[1], temp[2]])
-            # print([temp[0], temp[1], temp[2]])
-        
-        # print(list(ml.getKey(x)), ml.get(ml.getKey(x)))
-
-
-        print(f"{table}\n", file=results)
 
     
 
