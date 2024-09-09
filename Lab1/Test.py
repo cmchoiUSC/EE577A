@@ -52,19 +52,7 @@ class MultiDict:
     def getSize(self):
         return len(self.dict.keys())
 
-    # def delete(self, key=None, value=None):
-    #     if key is not None and key in self._dict:
-    #         if value is not None and value in self._dict[key]:
-    #             if len(self._dict[key]) == 1:
-    #                 del self._dict[key]
-    #                 self._keys.remove(key)
-    #             else:
-    #                 self._dict[key].remove(value)
-    #         else:
-    #             raise ValueError("Value not found")
 
-    # def clear(self):
-    #     self._dict.clear()
 
 class LeakDict:
     def __init__(self, expression):
@@ -154,14 +142,11 @@ with open('Results.txt', 'w') as results:
         for p in range(len(pins)):
             x.lgate = x.lgate.replace(pins[p], f"P{p}").replace("&","*")
 
-        # print((x.name, x.lgate, x.leak))
-
 
 
     for x in range(len(gFunctions)):                                                                                        # Looping through Cells 
         md.add(frozenset(gFunctions[x].getPinNames()), gFunctions[x].name)                                                  # Putting cell pin names into dictionary with cell name
         ml.add(frozenset(gFunctions[x].getPinNames()), (gFunctions[x].name, gFunctions[x].lgate, gFunctions[x].leak))
-        # print(frozenset(gFunctions[x].getPinNames()), (gFunctions[x].name, gFunctions[x].lgate, gFunctions[x].leak))
     for x in range(md.getSize()):                                                                                           # Looping through the dictionary
         table.add_row([list(md.getKey(x)), md.get(md.getKey(x))])                                                           # Adding dictionary to table
     """
@@ -184,54 +169,6 @@ with open('Results.txt', 'w') as results:
         for y in range(len(ml.get(ml.getKey(x)))):
             temp = ml.get(ml.getKey(x))[y]
             table.add_row([temp[0], temp[1], temp[2]])
-            # print(temp[0], temp[1], temp[2])
-        
-        # print(ml.get(ml.getKey(x)), len(ml.get(ml.getKey(x))))
-
-
-        # for y in ml.getKey(x):
-        #     print(y, ml.get(y))
-
-
-        # for y in range(len(list(ml.getKey(x)))):
-            # print(ml.get(ml.getKey(y)))
-            # temp = ml.get(ml.getKey(y))[0]
-            # table.add_row([temp[0], temp[1], temp[2]])
-            # print([temp[0], temp[1], temp[2]])
-        
-        # print(list(ml.getKey(x)), ml.get(ml.getKey(x)))
 
 
         print(f"{table}\n", file=results)
-
-    
-
-    #### Optional Part ####
-
-    # for x in gFunctions:
-    #     temp = x.lgate.replace("!"," ").replace("&"," ").split()
-    #     pins = []
-    #     for p in temp:
-    #         if pins.count(p) < 1: pins.append(p)
-        
-    #     for p in range(len(pins)):
-    #         x.lgate = x.lgate.replace(pins[p], f"P{p}").replace("&","*")
-
-    #     print((x.name, x.lgate, x.leak))
-
-
-
-
-        # for j in range(len(cellNames[i].pin)):                                      # Looping through each cell
-        #     temp = cellNames[i].pin[j].function.replace("("," ").replace(")"," ").replace("{"," ").replace("}"," ").replace("!"," ").replace("+"," ").replace("*"," ").replace("^"," ").split()
-        #     pins = []                                                               # Creates an array to hold all of the pins
-        #     for p in temp:                                                          # For loop to add the cleaned up pins labels into the pins array
-        #         if pins.count(p) < 1: pins.append(p)                                # Only add the pin if it hasn't already been added before
-
-        #     print(f"  Function {cellNames[i].pin[j].name} = {cellNames[i].pin[j].function}  ==> uses pins: ", end='', file=results)     # First half of pin print statement
-        #     for p in range(len(pins)):                                              # Printing through the pins array... need to make sure the last pin doesn't print with a comma
-        #         if p == len(pins)-1: print(pins[p], file=results)
-        #         else: print(pins[p] + ", ", end='', file=results)
-
-# for x in cellNames:
-#     print(x.leak, x.lgate, x.name)
